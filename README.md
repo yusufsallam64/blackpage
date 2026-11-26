@@ -1,10 +1,14 @@
 # Blackpage
 
-Tiny native macOS markdown editor. True black for OLED, off-white text. No Electron, no dependencies.
+Tiny native macOS markdown editor for focused, distraction-free writing sessions. No third-party dependencies!
 
 ## Install
 
-    ./install.sh        # builds and copies to /Applications
+Requires macOS 13 or later and a Swift 5.9+ toolchain (Xcode or the Command
+Line Tools).
+
+    ./build.sh          # builds build/Blackpage.app (ad-hoc signed)
+    ./install.sh        # builds, quits a running copy, copies to /Applications
 
 ## Keys
 
@@ -33,24 +37,12 @@ Tiny native macOS markdown editor. True black for OLED, off-white text. No Elect
 
 Pickers: ⌃J ⌃K or ⌃N ⌃P to move, Return to open, Esc to close.
 
-Pasting a URL over selected words makes `[words](url)`. View > Smart
-Punctuation (off by default) curls quotes and turns `--` into an em dash,
-except in code and notes.
-
-## Files
-
-Plain `.md` files, autosaved 1.5s after you stop typing. If another app
-changes the file while it's open, you're asked before anything is overwritten.
-New documents are drafts in `~/Library/Application Support/Blackpage/Drafts`
-until saved somewhere with ⌘S.
-
 ## History and replay
 
 Per file, in `~/Library/Application Support/Blackpage/History/`:
 
 - Versions: a snapshot when you open a file, every 5 minutes you write, and on
-  close. Newest 50 kept, then one per day. ⌘K → Version History; restoring is
-  undoable with ⌘Z.
+  close.
 - Replay: every edit is logged with its timing and compressed when the session
   ends (~160 KB for a 10k-word essay typed from scratch). ⌘K → Replay Writing.
   Pauses over 1.5s are squeezed out. Space pauses, 1–4 set speed (1×–64×),
